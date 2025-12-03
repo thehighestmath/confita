@@ -7,13 +7,14 @@ import (
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
-	"github.com/heetch/confita/backend"
+	yaml "github.com/goccy/go-yaml"
 	"github.com/pkg/errors"
-	"gopkg.in/yaml.v2"
+
+	"github.com/heetch/confita/backend"
 )
 
 // Backend that loads a configuration from a file.
-// It supports json and yaml formats.
+// It supports JSON, YAML, and TOML formats.
 type Backend struct {
 	path     string
 	name     string
@@ -51,8 +52,8 @@ func NewOptionalBackend(path string) *Backend {
 }
 
 // Unmarshal takes a struct pointer and unmarshals the file into it,
-// using either json or yaml based on the file extention.
-func (b *Backend) Unmarshal(ctx context.Context, to any) error {
+// using JSON, YAML, or TOML depending on the file extension.
+func (b *Backend) Unmarshal(_ context.Context, to any) error {
 	f, err := os.Open(b.path)
 	if err != nil {
 		if b.optional {
@@ -79,7 +80,7 @@ func (b *Backend) Unmarshal(ctx context.Context, to any) error {
 }
 
 // Get is not implemented.
-func (b *Backend) Get(ctx context.Context, key string) ([]byte, error) {
+func (b *Backend) Get(_ context.Context, _ string) ([]byte, error) {
 	return nil, errors.New("not implemented")
 }
 

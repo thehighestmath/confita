@@ -4,11 +4,11 @@ require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/aws/aws-sdk-go v1.23.20
 	github.com/coreos/etcd v3.3.3+incompatible
+	github.com/goccy/go-yaml v1.19.0
 	github.com/hashicorp/consul/api v1.1.0
 	github.com/hashicorp/vault/api v1.0.4
 	github.com/pkg/errors v0.8.1
 	github.com/stretchr/testify v1.4.0
-	gopkg.in/yaml.v2 v2.2.2
 )
 
 require (
@@ -64,6 +64,7 @@ require (
 	google.golang.org/grpc v1.22.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/square/go-jose.v2 v2.3.1 // indirect
+	gopkg.in/yaml.v2 v2.2.2 // indirect
 )
 
 go 1.23.0
